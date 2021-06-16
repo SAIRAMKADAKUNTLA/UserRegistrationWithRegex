@@ -11,6 +11,7 @@ namespace UserRegistration
             check.CheckFirstName("Sairam");
             check.CheckLastName("Kadakuntla");
             check.CheckEmail("sairam.kadakuntla@gmail.co.in");
+            check.CheckMobileNumber("91 1234567890");
 
         }
     }

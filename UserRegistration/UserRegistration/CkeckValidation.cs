@@ -37,5 +37,13 @@ namespace UserRegistration
                     Console.WriteLine("INVALID EMAIL");
             }
         }
+        public void CheckMobileNumber(string data)
+        {
+            string validateMobileNumber = "^[0-9]{2,4} [0-9]{10,15}$";
+            if(Regex.IsMatch(data,validateMobileNumber))
+                Console.WriteLine("NUMBER VALID SUCCESFULLY");
+            else
+                Console.WriteLine("INVALID NUMBER");
+        }
     }
 }
