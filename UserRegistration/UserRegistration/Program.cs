@@ -10,6 +10,7 @@ namespace UserRegistration
             CkeckValidation check = new CkeckValidation();
             check.CheckFirstName("Sairam");
             check.CheckLastName("Kadakuntla");
+            check.CheckEmail("sairam.kadakuntla@gmail.co.in");
 
         }
     }
