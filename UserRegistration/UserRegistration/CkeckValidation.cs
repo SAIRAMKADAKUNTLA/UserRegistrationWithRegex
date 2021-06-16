@@ -45,5 +45,13 @@ namespace UserRegistration
             else
                 Console.WriteLine("INVALID NUMBER");
         }
+        public void CheckPassword(string data)
+        {
+            string validatePassword = "^[a-zA-z0-9]{8,}$";
+                if(Regex.IsMatch(data,validatePassword))
+                Console.WriteLine("PASSWORD VALID SUCCESSFULLY");
+                else
+                Console.WriteLine("INVALID PASSWORD");
+        }
     }
 }
