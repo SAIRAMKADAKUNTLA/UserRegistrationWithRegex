@@ -8,7 +8,8 @@ namespace UserRegistration
         {
             Console.WriteLine("User registration with the regex");
             CkeckValidation check = new CkeckValidation();
-            check.CheckName("Sairam");
+            check.CheckFirstName("Sairam");
+            check.CheckLastName("Kadakuntla");
 
         }
     }

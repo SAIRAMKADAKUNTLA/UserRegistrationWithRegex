@@ -7,14 +7,24 @@ namespace UserRegistration
 {
     class CkeckValidation
     {
-        public void CheckName(string data)
+        public void CheckFirstName(string data)
         {
             string validateFirstName = "^[A-Z][a-z]{3,20}";
             {
                 if (Regex.IsMatch(data,validateFirstName))
-                Console.WriteLine("Name valide succesfully");
+                Console.WriteLine("Name valid succesfully");
                 else
                     Console.WriteLine("Invalid name");
+            }
+        }
+        public void CheckLastName(string data)
+        {
+            string validateLastName = "^[A-Z][a-z]{3,20}";
+            {
+                if(Regex.IsMatch(data,validateLastName))
+                    Console.WriteLine("NAME VALID SUCCESFULLY");
+                else
+                    Console.WriteLine("INVALID NAME");
             }
         }
     }
