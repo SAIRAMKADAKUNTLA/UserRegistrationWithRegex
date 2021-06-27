@@ -7,75 +7,154 @@ namespace UserRegistration
 {
     public class CheckValidation
     {
-        string Name = "^[A-Z][a-z0-9A-Z]{3,}";
-        string EmailId = "^[a-z0-9A-Z]+([._+-][a-z0-9A-Z]+)*[@][a-z0-9A-Z]+[.][a-zA-Z]{2,3}(.[a-zA-Z]{2,})?$";
-        string mobileNo = "[1-9]{1}[0-9]{9}";
-        string Password = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()]){1}[a-zA-Z0-9]{5,}";
+        readonly string Name = "^[A-Z][a-z0-9A-Z]{3,}";
+        readonly string EmailId = "^[a-z0-9A-Z]+([._+-][a-z0-9A-Z]+)*[@][a-z0-9A-Z]+[.][a-zA-Z]{2,3}(.[a-zA-Z]{2,})?$";
+        readonly string mobileNo = "[1-9]{1}[0-9]{9}";
+        readonly string Password = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()]){1}[a-zA-Z0-9]{5,}";
         public string validateFirstName(string name)
         {
-            if (Regex.IsMatch(name, Name))
+            try
             {
-                Console.WriteLine("Firstname valid");
-                return "Happy";
+                if (string.IsNullOrEmpty(name))
+                {
+                    throw new RegexValidationException(RegexValidationException.InvalidUserDetails.EMPTY_NAME);
+                }
+
+                else if (Regex.IsMatch(name, Name))
+                {
+                    Console.WriteLine("Firstname valid");
+                    return "Happy";
+                }
+                else
+                {
+                    throw new RegexValidationException(RegexValidationException.InvalidUserDetails.INVALID_NAME);
+                }
+                
             }
-            else
+            
+            catch (RegexValidationException ex)
             {
-                Console.WriteLine("Invalid");
-                return "Sad";
+                Console.WriteLine(ex.Message);
             }
+            return "Sad";
         }
         public string validateLastName(string name)
         {
-            if (Regex.IsMatch(name, Name))
+            try
             {
-                Console.WriteLine("Lastname valid");
-                return "Happy";
+                if (string.IsNullOrEmpty(name))
+                {
+                    throw new RegexValidationException(RegexValidationException.InvalidUserDetails.EMPTY_NAME);
+                }
+                else if (Regex.IsMatch(name, Name))
+                {
+                    Console.WriteLine("Lastname valid");
+                    return "Happy";
+                }
+                else
+                {
+                    throw new RegexValidationException(RegexValidationException.InvalidUserDetails.INVALID_NAME);
+                }
             }
-            else
+            catch(RegexValidationException ex)
             {
-                Console.WriteLine("Invalid");
+                Console.WriteLine(ex.Message);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+            }
                 return "Sad";
             }
-        }
         public string validateEmail(string email)
         {
-            if (Regex.IsMatch(email, EmailId))
+            try
             {
-                Console.WriteLine("Email ID is Valid");
-                return "Happy";
+                if (string.IsNullOrEmpty(email))
+                {
+                    throw new RegexValidationException(RegexValidationException.InvalidUserDetails.EMPTY_EMAIL);
+                }
+                else if (Regex.IsMatch(email, EmailId))
+                {
+                    Console.WriteLine("Email ID is Valid");
+                    return "Happy";
+                }
+                else
+                {
+                    throw new RegexValidationException(RegexValidationException.InvalidUserDetails.INVALID_EMAIL);
+                }
             }
-            else
+            catch (RegexValidationException ex)
             {
-                Console.WriteLine("Email is Invalid");
-                return "Sad";
+                Console.WriteLine(ex.Message);
             }
-        }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+            }
+
+            return "Sad";
+            }
         public string validateMobileNo(string mobileno)
         {
-            if (Regex.IsMatch(mobileno, mobileNo))
+            try
             {
-                Console.WriteLine("Mobile No is Valid");
-                return "Happy";
+                if (string.IsNullOrEmpty(mobileno))
+                {
+                    throw new RegexValidationException(RegexValidationException.InvalidUserDetails.EMPTY_MOBILE_NUMBER);
+                }
+                if (Regex.IsMatch(mobileno, mobileNo))
+                {
+                    Console.WriteLine("Mobile No is Valid");
+                    return "Happy";
+                }
+                else
+                {
+                    throw new RegexValidationException(RegexValidationException.InvalidUserDetails.INVALID_MOBILE_NUMBER);
+                }
             }
-            else
+            catch (RegexValidationException ex)
             {
-                Console.WriteLine("Mobile No  is Invalid");
-                return "Sad";
+                Console.WriteLine(ex.Message);
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+            }
+
+            return "Sad";
         }
 
         public string validatePassword(string password)
         {
-            if (Regex.IsMatch(password, Password))
+            try
             {
-                Console.WriteLine("Password is Valid");
-                return "Happy";
+                throw new RegexValidationException(RegexValidationException.InvalidUserDetails.EMPTY_PASSWORD);
+
+                if (Regex.IsMatch(password, Password))
+                {
+                    Console.WriteLine("Password is Valid");
+                    return "Happy";
+                }
+                else
+                {
+                    throw new RegexValidationException(RegexValidationException.InvalidUserDetails.INVALID_PASSWORD);
+                }
             }
-            else
+            catch (RegexValidationException ex)
             {
-                Console.WriteLine("Password is Invalid");
-                return "Sad";
+                Console.WriteLine(ex.Message);
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+            }
+
+            return "Sad";
         }
     }
 }

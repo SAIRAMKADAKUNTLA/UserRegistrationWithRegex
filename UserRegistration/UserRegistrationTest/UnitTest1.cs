@@ -29,5 +29,17 @@ namespace UserRegistrationTest
             Assert.AreEqual(mobile, "Happy");
             Assert.AreEqual(password, "Happy");
         }
+        [Test]
+        [TestCase("sairam@gmail.com")]
+        [TestCase("abc.100@yahoo.com")]
+        [TestCase("abc-100@abc.net")]
+        [TestCase("abc.100@abc.com.au")]
+        [TestCase("abc+100@gmail.com")]
+        public void Given_MultipleEmails_Returns_Result(string email)
+        {
+            CheckValidation checkValidation = new CheckValidation();
+            string result = checkValidation.validateEmail(email);
+            Assert.AreEqual(result, email);
+        }
     }
 }
